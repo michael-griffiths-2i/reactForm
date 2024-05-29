@@ -45,4 +45,4 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 ## Cypress
 
-To run Cypress, open a second terminal window and run `cypress open`
+To run Cypress, open a second terminal window and run `npm run cypress:open`
