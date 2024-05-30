@@ -10,7 +10,7 @@ function App() {
   
   const handleLogin = (event) => {
     event.preventDefault();
-    if(username== "admin" && password =="admin"){
+    if(username=== "admin" && password ==="admin"){
       setIsLoggedIn(true);
      
     }
@@ -47,6 +47,7 @@ function App() {
             <input type="submit" id="login" value="Login"/>
             <input type="button" value="Cancel" id="cancel_button" onClick={clearFields} />
         </form>
+
 </div>
            
      </>  
