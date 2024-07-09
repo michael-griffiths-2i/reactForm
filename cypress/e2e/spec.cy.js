@@ -1,48 +1,40 @@
+import LoginPage from "../pageObjects/LoginPage"
+
 describe('login test suite', () => {
-  beforeEach(function(){
-    cy.visit('localhost:3000')
+  
+  //create a new instance of the LoginPage class called loginPage
+  const loginPage = new LoginPage()
+
+  beforeEach(()=>{
+    loginPage.visit()
   })
 
   it('the_form_is_present',() => {
-    cy.get('#formName')
+    //cy.get('#formName')
+    loginPage.getForm()
   })
   it('correct_login',()=>{
-    cy.get('#formName')
-    cy.get('#username').type('admin')
-    cy.get('#password').type('admin')
-    cy.get('#login').click()
+    loginPage.getForm()
+    loginPage.typeUsername('admin')
+    loginPage.typePassword('admin')
+    loginPage.submit()
     cy.contains('Welcome, admin!')
   })
 
   it('wrong_login',()=>{
-    cy.get('#formName')
-    cy.get('#username').type('admina')
-    cy.get('#password').type('admina')
-    cy.get('#login').click()
-    cy.get('#formName')
+    loginPage.getForm()
+    loginPage.typeUsername('admina')
+    loginPage.typePassword('admina')
+    loginPage.submit()
+    loginPage.getForm()
   })
   it('clear_button',()=>{
-      cy.get('#formName')
-      cy.get('#username').type('just typing some stuff in here')
-      cy.get('#password').type('just typing some stuff in here')
-      cy.get('#cancel_button').click()
-      cy.get('#username').should('have.value', '')
-      cy.get('#password').should('have.value', '')
+    loginPage.getForm()
+    loginPage.typeUsername('admina')
+    loginPage.typePassword('admina')
+    loginPage.cancel()
+    loginPage.checkFieldsAreEmpty()
+
   })
-//  it('check_color', () => {
-//    cy.get('#formName').then(($formName) => {
-//      const style = window.getComputedStyle($formName[0])
-//      expect(style.color).to.equal('rgb(f, 0, 0)')
-//    })
-//  })
-
-
-
-//Testing that a logout button is present
-//  it('logout_button',()=>{
-//    cy.get('#logout').click()
-//
-//  })
-
 
 })
