@@ -30,7 +30,7 @@ describe('login test suite', () => {
   })
   it('clear_button',()=>{
     loginPage.getForm()
-    loginPage.typeUsername('admina')
+    loginPage.typeUsername('lots and lots of writing')
     loginPage.typePassword('admina')
     loginPage.cancel()
     loginPage.checkFieldsAreEmpty()
